@@ -1,7 +1,7 @@
 /******************************************************************************
- * Họ và tên: [ĐIỀN TÊN TẠI ĐÂY]
- * MSSV:      [ĐIỀN MSSV TẠI ĐÂY]
- * Lớp:       [ĐIỀN LỚP TẠI ĐÂY]
+ * Họ và tên: [Đặng Đình Đức]
+ * MSSV:      [PS48675]
+ * Lớp:       [COM108 - CS21302]
  *****************************************************************************/
 
 //  BÀI 3: XÂY DỰNG CHƯƠNG TRÌNH TÍNH TIỀN ĐIỆN 
@@ -10,14 +10,27 @@
  
 #include <stdio.h>
 
-int main(){
-    
-    // Khai báo biến
+int main() {
+    int kwh;
+    double tien = 0;
 
+    // Bậc thang và đơn giá
+    int bac[]     = {50, 50, 100, 100, 100, 999999};  
+    int dongia[]  = {1678, 1734, 2014, 2536, 2834, 2927};
 
-    // Nhập dữ liệu
+    printf("Nhap so dien tieu thu (kWh): ");
+    scanf("%d", &kwh);
 
+    int i = 0;
+    int remaining = kwh;
 
-    // Xử lý, tính toán VÀ Hiển thị kết quả
+    while (remaining > 0) {
+        int used = remaining > bac[i] ? bac[i] : remaining;
+        tien += used * dongia[i];
+        remaining -= used;
+        i++;
+    }
 
+    printf("So tien dien phai dong: %.0lf VND\n", tien);
+    return 0;
 }
